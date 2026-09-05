@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Prebuilt angular material theme
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+//  star-rating styles
+@import '~css-star-rating/css/star-rating.min.css';
+
+// Main variables file
+@import "assets/styles/scss/variables";
+
+// Main scss files
+@import "assets/styles/scss/main";
+
+
+html, body { 
+    height: 100%; 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}

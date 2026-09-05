@@ -1,0 +1,66 @@
+<div class="product-details-wrap m-333" fxLayout="row wrap" fxLayout.lt-md="column">
+  <div fxLayout="row" fxFlex="100" class="mb-05">
+    <button mat-icon-button class="text-muted" routerLink="/store"><mat-icon>chevron_left</mat-icon> <span >Back to Store</span></button>
+    <span fxFlex></span>
+    <span fxFlex="20px"></span>
+    <button mat-raised-button color="accent" routerLink="/store/cart">
+      <mat-icon>shopping_cart</mat-icon> Cart ({{cartData?.itemCount}})</button>
+  </div>
+
+  <div fxFlex.lt-md="auto" class="product-photos-wrap">
+    <div class="gallery-photo" [@animate]="{value:'*',params:{delay: '100ms', y:'50px'}}">
+      <img class="mat-elevation-z2" [src]="'assets/images/covers/' + book.coverPhoto" alt="cover image">
+    </div>
+  </div>
+
+  <div fxFlex="50" class="product-content-wrap" [@animate]="{value:'*',params:{delay: '100ms', x:'50px'}}">
+    <h1 class="title">{{book?.title}}</h1>
+    <div class="main-info mb-1">
+      <p class="mb-05" [ngStyle]="{maxWidth: '650px'}">{{book?.description}}</p>
+      <p class="text-muted p-line">
+        <strong>Genres: </strong> 
+        <span *ngFor="let g of book.genres; let i = index">
+          <span class="mat-color-default">{{g}}</span>{{(i < book.genres.length - 1)?", ":""}}
+        </span>
+      </p>
+      <p class="text-muted p-line">
+        <mat-chip-listbox>
+          <mat-chip-option>
+            <strong>Tags: </strong>
+          </mat-chip-option>
+          <mat-chip-option>
+            <mat-chip *ngFor="let t of book.tags">{{t}}</mat-chip>
+          </mat-chip-option>
+        </mat-chip-listbox>
+    </div>
+    <div class="product-rating" *ngIf="book?.ratings?.rating">
+      <star-rating [rating]="book?.ratings?.rating" [starType]="'svg'" [readOnly]="true" [size]="'medium'" [staticColor]="'ok'">
+      </star-rating>
+      <small class="text-muted">{{book?.ratings?.rating}} ({{book?.ratings?.ratingCount}})</small>
+    </div>
+    <div class="product-options">
+      <div class="opt-radio mb-1">
+        <label class="option-label text-muted">Choose condition: </label>
+        <mat-radio-group fxLayout="column" fxLayoutGap="5px">
+          <mat-radio-button  [value]="'opt1'">New</mat-radio-button>
+          <mat-radio-button  [value]="'opt2'">Used</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="opt-quantity mb-1">
+        <label class="option-label text-muted" for="quantity">Quantity: </label>
+        <input class="quantity-input default-bg" id="quantity" name="quantity" type="number" [(ngModel)]="quantity">
+      </div>
+      <div class="price">
+        <strong>Price: </strong>
+        <span>{{book?.price?.amount | currency:book?.price?.currency}}</span>
+        <del class="text-muted">{{book?.price?.mrp | currency:book?.price?.currency}}</del>
+      </div>
+      <br />
+    </div>
+    <div fxLayout="row">
+      <button mat-raised-button color="accent" (click)="addToCart()"><mat-icon>add_shopping_cart</mat-icon> Add to Cart</button>
+      <span fxFlex="8px"></span>
+      <button mat-raised-button color="primary" routerLink="/store"><mat-icon>chevron_left</mat-icon> Back to Store</button>
+    </div>
+  </div>
+</div>
