@@ -159,3 +159,5 @@ target/
 # OS
 .DS_Store
 Thumbs.db
+
+platform/docker/apisix/etcd_conf/data/
