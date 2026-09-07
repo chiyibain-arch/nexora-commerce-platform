@@ -52,6 +52,7 @@ class ExpressServer {
     new OpenApiValidator({
       apiSpec: this.openApiPath,
       operationHandlers: path.join(__dirname),
+      validateRequests: false,
       fileUploader: { dest: config.FILE_UPLOAD_PATH },
     }).install(this.app)
       .catch(e => console.log(e))

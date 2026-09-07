@@ -6,7 +6,9 @@
   "scripts": {
     "prestart": "npm install",
     "start": "nodemon index.js",
-    "test": "mocha 'tests/completeTest.js'"
+    "start:test": "node index.js",
+    "test:unit": "mocha 'tests/completeTest.js'",
+    "test": "node tests/run-tests.js"
   },
   "keywords": [
     "openapi-generator",

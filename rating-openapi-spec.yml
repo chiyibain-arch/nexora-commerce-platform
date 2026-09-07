@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: RatingService API Specification
-  description: 'This API server exposes required endpoints for managing book ratings in Microservices reference application.'
+  description: "This API server exposes required endpoints for managing book ratings in Microservices reference application."
   termsOfService: https://www.anitechcs.com/terms-condition/
   contact:
     email: contact@anitechcs.com
@@ -13,11 +13,11 @@ externalDocs:
   description: Find out more about Microservices reference application
   url: https://github.com/anitechcs/microservices-reference-application
 servers:
-  - url: 'https://mra-bookstore.tk/v1'
+  - url: "https://mra-bookstore.tk/v1"
     description: Rating Service production server
 tags:
-- name: Rating-Service
-  description: Rating service enpoints required for Microservices reference application
+  - name: Rating-Service
+    description: Rating service enpoints required for Microservices reference application
 components:
   schemas:
     Rating:
@@ -43,7 +43,7 @@ components:
         message:
           type: string
         ratings:
-          $ref: '#/components/schemas/Rating'
+          $ref: "#/components/schemas/Rating"
     RatingErrorResponse:
       type: object
       properties:
@@ -63,36 +63,35 @@ paths:
       description: Returns ratings for a particulat book
       operationId: getBookRatings
       parameters:
-      - name: bookId
-        in: path
-        description: Id of book to return ratings
-        required: true
-        schema:
-          type: integer
-          format: int64
+        - name: bookId
+          in: path
+          description: Id of book to return ratings
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         200:
           description: Success response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingSuccessResponse'
+                $ref: "#/components/schemas/RatingSuccessResponse"
         400:
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingErrorResponse'
+                $ref: "#/components/schemas/RatingErrorResponse"
         404:
           description: No records found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingErrorResponse'
+                $ref: "#/components/schemas/RatingErrorResponse"
         500:
           description: Server error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingErrorResponse'
-
+                $ref: "#/components/schemas/RatingErrorResponse"

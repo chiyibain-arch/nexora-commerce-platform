@@ -2,7 +2,8 @@ openapi: 3.0.2
 info:
   contact:
     email: contact@anitechcs.com
-  description: This API server exposes required endpoints for managing book ratings
+  description:
+    This API server exposes required endpoints for managing book ratings
     in Microservices reference application.
   license:
     name: Apache 2.0
@@ -14,11 +15,11 @@ externalDocs:
   description: Find out more about Microservices reference application
   url: https://github.com/anitechcs/microservices-reference-application
 servers:
-- description: Rating Service production server
-  url: https://mra-bookstore.tk/v1
+  - description: Rating Service production server
+    url: https://mra-bookstore.tk/v1
 tags:
-- description: Rating service enpoints required for Microservices reference application
-  name: Rating-Service
+  - description: Rating service enpoints required for Microservices reference application
+    name: Rating-Service
 paths:
   /rating/{bookId}:
     description: Rating service
@@ -26,42 +27,42 @@ paths:
       description: Returns ratings for a particulat book
       operationId: getBookRatings
       parameters:
-      - description: Id of book to return ratings
-        explode: false
-        in: path
-        name: bookId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
+        - description: Id of book to return ratings
+          explode: false
+          in: path
+          name: bookId
+          required: true
+          schema:
+            format: int64
+            type: integer
+          style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingSuccessResponse'
+                $ref: "#/components/schemas/RatingSuccessResponse"
           description: Success response
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingErrorResponse'
+                $ref: "#/components/schemas/RatingErrorResponse"
           description: Client error
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingErrorResponse'
+                $ref: "#/components/schemas/RatingErrorResponse"
           description: No records found
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RatingErrorResponse'
+                $ref: "#/components/schemas/RatingErrorResponse"
           description: Server error
       tags:
-      - Rating-Service
+        - Rating-Service
       x-eov-operation-handler: controllers/RatingServiceController
 components:
   schemas:
@@ -96,7 +97,7 @@ components:
         message:
           type: string
         ratings:
-          $ref: '#/components/schemas/Rating'
+          $ref: "#/components/schemas/Rating"
       type: object
     RatingErrorResponse:
       properties:

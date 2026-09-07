@@ -6,7 +6,7 @@ const chaiHttp = require("chai-http");
 const expect = chai.expect;
 
 chai.use(chaiHttp);
-const host = "http://localhost:8080";
+const host = process.env.RATING_SERVICE_URL || "http://localhost:18080";
 const endpoint = "/v1/rating/12356";
 
 describe("Rating api unit test", () => {
@@ -17,7 +17,7 @@ describe("Rating api unit test", () => {
                 if (err) {
                     console.log(err);
                     throw new Error("API Error");
-                }    
+                }
                 expect(res.body).to.be.an("object");
                 expect(res.body.statusCode).to.equal(200)
                 expect(res.body.message).to.equal('Success.')

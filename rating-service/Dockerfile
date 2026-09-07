@@ -1,14 +1,14 @@
-FROM node:12-alpine
-  
+FROM node:20-alpine
+
 WORKDIR /app
- 
+
 COPY package.json package.json
 COPY package-lock.json package-lock.json
- 
-RUN npm install
- 
+
+RUN npm ci
+
 COPY . .
 
 EXPOSE 8080
- 
+
 CMD [ "node", "index.js" ]
